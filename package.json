@@ -1,12 +1,13 @@
 {
   "name": "traduire-gpt",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A utility function for translating text using AI.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "ts-node test.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "publish": "pnpm build && npm publish --access public"
   },
   "author": "Matt Carey",
   "license": "MIT",
