@@ -1,0 +1,38 @@
+{
+  "name": "traduire-gpt",
+  "version": "0.0.1",
+  "description": "A utility function for translating text using AI.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "ts-node test.ts"
+  },
+  "author": "Matt Carey",
+  "license": "MIT",
+  "keywords": [
+    "translate",
+    "chatgpt",
+    "gpt",
+    "gpt3",
+    "openai",
+    "gpt4",
+    "vertexai",
+    "huggingface",
+    "ai",
+    "genai",
+    "llama",
+    "gemini"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "langchain": "^0.0.210"
+  }
+}
