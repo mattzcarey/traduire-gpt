@@ -1,12 +1,11 @@
 import dotenv from "dotenv";
-import { translate } from "./src/translate";
+import { traduire, translate } from "./src";
 
 dotenv.config();
 
-const test = async (text: string, outputLanguage?: string): Promise<string> => {
-  return translate(text, outputLanguage);
-};
+translate("How is it going?", "Spanish").then((res) => console.log(res));
 
-test("How is it going?", "Spanish").then((res) => console.log(res));
+translate("J'ai la dalle").then((res) => console.log(res));
 
-test("J'ai la dalle").then((res) => console.log(res));
+// you can also use the traduire function which is an alias for translate
+traduire("C'est ouf, là", "English").then((res) => console.log(res));

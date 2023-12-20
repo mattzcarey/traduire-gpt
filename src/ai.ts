@@ -10,12 +10,10 @@ export class AI {
     this.langModel = new ChatOpenAI({
       openAIApiKey: AI.getApiKey(),
       modelName: "gpt-3.5-turbo",
-      temperature: 0,
     });
     this.translateModel = new ChatOpenAI({
       openAIApiKey: AI.getApiKey(),
       modelName: "gpt-4",
-      temperature: 0.1,
     });
     this.outputLanguage = outputLanguage;
   }
