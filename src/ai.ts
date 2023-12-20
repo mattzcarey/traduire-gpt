@@ -3,22 +3,38 @@ import { HumanMessage, SystemMessage } from "langchain/schema";
 import { langPrompt, translatePrompt } from "./prompt";
 
 export class AI {
-  model: ChatOpenAI;
-  outputLanguage?: string;
-  constructor(apiKey: string, outputLanguage?: string) {
-    this.model = new ChatOpenAI({
-      openAIApiKey: apiKey,
+  private langModel: ChatOpenAI;
+  private translateModel: ChatOpenAI;
+  private outputLanguage?: string;
+  constructor(outputLanguage?: string) {
+    this.langModel = new ChatOpenAI({
+      openAIApiKey: AI.getApiKey(),
+      modelName: "gpt-3.5-turbo",
+      temperature: 0,
+    });
+    this.translateModel = new ChatOpenAI({
+      openAIApiKey: AI.getApiKey(),
       modelName: "gpt-4",
       temperature: 0.1,
     });
     this.outputLanguage = outputLanguage;
   }
 
+  private static getApiKey(): string {
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      throw new Error("OPENAI_API_KEY is not set in process.env");
+    }
+
+    return apiKey;
+  }
+
   private async getLanguage(text: string): Promise<string> {
     const systemMessage = new SystemMessage(langPrompt);
     const humanMessage = new HumanMessage(text);
 
-    const res = await this.model.call([systemMessage, humanMessage]);
+    const res = await this.langModel.call([systemMessage, humanMessage]);
 
     return res.content as string;
   }
@@ -60,7 +76,7 @@ export class AI {
       translatePrompt
     );
 
-    const res = await this.model.call([
+    const res = await this.translateModel.call([
       new SystemMessage(prompt),
       new HumanMessage(text),
     ]);

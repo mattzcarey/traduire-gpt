@@ -30,7 +30,7 @@ const apiKey = process.env.OPENAI_API_KEY;
 
 const text = "J'ai la dalle.";
 
-translate(text, apiKey).then((res) => {
+translate(text).then((res) => {
   console.log(res);
 });
 
@@ -38,7 +38,7 @@ translate(text, apiKey).then((res) => {
 
 const text2 = "Hello, my name is John Doe and I am a software engineer.";
 
-translate(text2, apiKey).then((res) => {
+translate(text2).then((res) => {
   console.log(res);
 });
 
@@ -46,19 +46,19 @@ translate(text2, apiKey).then((res) => {
 
 const text3 = "How are is it going?";
 
-translate(text3, apiKey, "Spanish").then((res) => {
+translate(text3, "Spanish").then((res) => {
   console.log(res);
 });
 
 // Output: ¿Cómo va todo?
 ```
 
-## Local testing/development
+## Local development
 
-We have made a few tests to make sure the package works as expected. You can run them locally by cloning the repo and running the following commands:
+We have made a few tests to make sure the package works as expected. You can run this locally by cloning the repo and running the following commands. We prefer to use `pnpm` but you can use `npm` if you prefer:
 
 ```bash
-git clone <the repo url>
+git clone https://github.com/mattzcarey/traduire-gpt
 
 cd traduire-gpt
 
