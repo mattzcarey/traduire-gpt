@@ -62,10 +62,18 @@ git clone https://github.com/mattzcarey/traduire-gpt
 
 cd traduire-gpt
 
+pnpm i dotenv #for loading the API key
+
 pnpm test
 ```
 
 You can modify the tests in `tests.ts` to test different scenarios.
+
+### Build the package
+
+```bash
+pnpm build
+```
 
 ## Roadmap
 
