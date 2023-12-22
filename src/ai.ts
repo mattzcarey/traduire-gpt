@@ -28,11 +28,15 @@ export class AI {
     return apiKey;
   }
 
-  private async getLanguage(text: string): Promise<string> {
+  private async getLanguage(text: string): Promise<string | undefined> {
     const systemMessage = new SystemMessage(langPrompt);
     const humanMessage = new HumanMessage(text);
 
     const res = await this.langModel.call([systemMessage, humanMessage]);
+
+    if (res.content == "") {
+      return undefined;
+    }
 
     return res.content as string;
   }
@@ -62,8 +66,12 @@ export class AI {
       .replace("{outputLanguage}", outputLanguage);
   }
 
-  public async translate(text: string): Promise<string> {
+  public async translate(text: string): Promise<string | undefined> {
     const baseLanguage = await this.getLanguage(text);
+
+    if (!baseLanguage) {
+      return undefined;
+    }
     const outputLanguage = this.determineOutputLanguage(
       baseLanguage,
       this.outputLanguage
@@ -76,7 +84,9 @@ export class AI {
 
     const res = await this.translateModel.call([
       new SystemMessage(prompt),
-      new HumanMessage(text),
+      new HumanMessage(
+        `This is the text from the user, return only the translation without the enclosing quotation marks: '${text}'`
+      ),
     ]);
 
     return res.content as string;

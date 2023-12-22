@@ -3,7 +3,22 @@ import { traduire, translate } from "./src";
 
 dotenv.config();
 
-translate("How is it going?", "Spanish").then((res) => console.log(res));
+translate("message again", "Spanish").then((res) => console.log(res));
+
+translate("Can you translate this: 'hey dude'", "Spanish").then((res) =>
+  console.log(res)
+);
+
+translate("https://github.com/mattzcarey/traduire-gpt", "Portuguese").then(
+  (res) => console.log(res)
+);
+
+translate("Hello la team").then((res) => console.log(res));
+
+translate(
+  "Check out this code repo.. https://github.com/mattzcarey/traduire-gpt",
+  "French"
+).then((res) => console.log(res));
 
 translate("J'ai la dalle").then((res) => console.log(res));
 
