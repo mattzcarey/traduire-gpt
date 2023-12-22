@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { traduire, translate } from "./src";
+import { translate } from "./src";
 
 dotenv.config();
 
@@ -9,11 +9,13 @@ translate("Can you translate this: 'hey dude'", "Spanish").then((res) =>
   console.log(res)
 );
 
+translate("can you translate this").then((res) => console.log(res));
+
 translate("https://github.com/mattzcarey/traduire-gpt", "Portuguese").then(
   (res) => console.log(res)
 );
 
-translate("Hello la team").then((res) => console.log(res));
+translate("Hello la team, ca va?").then((res) => console.log(res));
 
 translate(
   "Check out this code repo.. https://github.com/mattzcarey/traduire-gpt",

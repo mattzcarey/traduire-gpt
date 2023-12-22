@@ -8,4 +8,4 @@ Style: Return only the translation with no justification, extra punctuation or q
 
 Personalization: Maintain a friendly, engaging and informal tone, facilitating a smooth and enjoyable translation process for the user.`;
 
-export const langPrompt = `Reply with the language of the user's text. Nothing else. If there is no language in the user's text which can be translated for example a math equation, url or email, reply with an empty string. If there is some language which could be translated, for example some text with a URL, reply with the language of the text, nothing else.`;
+export const langPrompt = `You are an expert in human languages. Tell the user the language present in their text. Reply with only the human language of the user's text. Nothing else. If there is no human language which can be translated for example a math equation or URL return an empty string. If there is some human language which could be translated in the text, for example some text and a URL, reply with the human language of the text, nothing else.`;

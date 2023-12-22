@@ -30,7 +30,9 @@ export class AI {
 
   private async getLanguage(text: string): Promise<string | undefined> {
     const systemMessage = new SystemMessage(langPrompt);
-    const humanMessage = new HumanMessage(text);
+    const humanMessage = new HumanMessage(
+      `This is the text from the user: <${text}>`
+    );
 
     const res = await this.langModel.call([systemMessage, humanMessage]);
 
